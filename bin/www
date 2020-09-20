@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+const { join } = require('path');
+
+const app = require(join(__dirname, `../${process.argv[2]}`));
+return app();
