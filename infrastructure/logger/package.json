@@ -1,0 +1,20 @@
+{
+  "name": "logger",
+  "version": "1.0.0",
+  "description": "Common logger",
+  "main": "Logger.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "cls-hooked": "4.2.2",
+    "lodash": "4.17.20",
+    "winston": "3.3.3"
+  },
+  "devDependencies": {
+    "winston-transport": "4.4.0"
+  }
+}
