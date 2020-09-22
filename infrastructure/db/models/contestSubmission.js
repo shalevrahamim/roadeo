@@ -1,34 +1,27 @@
-const { DataTypes } = require('sequelize');
-
-module.exports = (sequelize) => {
-    sequelize.define('contest_submission', {
-        id: {
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-            type: DataTypes.INTEGER
-        },
-        contest_id: {
-            allowNull: false,
-            type: DataTypes.INTEGER,
-        },
-        user_id: {
-            allowNull: false,
-            type: DataTypes.INTEGER,
-        },
-        up_votes: {
-            allowNull: false,
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-        },
-        url: {
-            allowNull: false,
-            type: DataTypes.STRING
-        },
-        metadata: {
-            type: DataTypes.STRING
-        }
-    }, {
-        timestamps: true
-    });
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class contestSubmission extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  };
+  contestSubmission.init({
+    contestId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
+    upVotes: DataTypes.INTEGER,
+    url: DataTypes.STRING,
+    metadata: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'contestSubmission',
+  });
+  return contestSubmission;
 };

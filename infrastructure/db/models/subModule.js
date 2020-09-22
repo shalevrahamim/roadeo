@@ -1,25 +1,25 @@
-const { DataTypes } = require('sequelize');
-
-module.exports = (sequelize) => {
-    sequelize.define('sub_module', {
-        id: {
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-            type: DataTypes.INTEGER
-        },
-        module_id: {
-            type: DataTypes.INTEGER
-        },
-        name: {
-            allowNull: false,
-            type: DataTypes.STRING,
-            unique: true
-        },
-        description: {
-            type: DataTypes.STRING
-        }
-    }, {
-        timestamps: true
-    });
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class subModule extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  };
+  subModule.init({
+    name: DataTypes.STRING,
+    description: DataTypes.STRING,
+    moduleId: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'subModule',
+  });
+  return subModule;
 };

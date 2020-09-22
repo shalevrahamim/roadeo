@@ -1,26 +1,26 @@
-const { DataTypes } = require('sequelize');
-
-module.exports = (sequelize) => {
-    sequelize.define('descriptor', {
-        id: {
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-            type: DataTypes.INTEGER
-        },
-        sub_module_id: {
-            type: DataTypes.INTEGER
-        },
-        type: {
-            type: DataTypes.STRING,
-        },
-        state: {
-            type: DataTypes.STRING
-        },
-        strategy: {
-            type: DataTypes.STRING
-        }
-    }, {
-        timestamps: true
-    });
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class descriptor extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  };
+  descriptor.init({
+    subModuleId: DataTypes.INTEGER,
+    type: DataTypes.STRING,
+    state: DataTypes.STRING,
+    strategy: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'descriptor',
+  });
+  return descriptor;
 };
