@@ -9,7 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       subModuleId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'subModules',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
       },
       type: {
         type: Sequelize.STRING
