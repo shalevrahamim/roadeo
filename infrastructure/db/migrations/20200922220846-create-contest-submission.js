@@ -27,9 +27,12 @@ module.exports = {
         onDelete: 'cascade'
       },
       upVotes: {
+        allowNull: false,
+        defaultValue: 0,
         type: Sequelize.INTEGER
       },
       url: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       metadata: {

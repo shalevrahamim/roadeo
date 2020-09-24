@@ -9,6 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       email: {
+        unique: 'compositeIndex',
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {
