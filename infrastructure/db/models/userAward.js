@@ -6,8 +6,6 @@ const user = require('./user');
 module.exports = (sequelize, DataTypes) => {
   class userAward extends Model {
     static associate(models) {
-      models.User.belongsToMany(models.award, { through: userAward });
-      models.award.belongsToMany(models.User, { through: userAward });
     }
   };
   userAward.init({

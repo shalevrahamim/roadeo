@@ -8,7 +8,18 @@ module.exports = (sequelize, DataTypes) => {
       subModule.hasMany(models.courseSubmission, { as: 'submissions' });
       subModule.hasMany(models.descriptor, { as: 'descriptors' });
       subModule.belongsTo(models.module, { foreignKey: 'moduleId', as: 'module' });
-      subModule.hasMany(models.userCourse, { as: 'users' });
+      subModule.belongsToMany(models.User, {
+        through: 'userCourse',
+        as: 'users',
+        foreignKey: 'subModuleId',
+        otherKey: 'userId'
+      });
+      subModule.belongsToMany(models.course, {
+        through: 'userCourse',
+        as: 'courses',
+        foreignKey: 'subModuleId',
+        otherKey: 'courseId'
+      });
     }
   };
   subModule.init({
