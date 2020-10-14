@@ -1,7 +1,9 @@
 const logger = require('./lib/logger');
+const { initDb } = require('../infrastructure/db');
 
 const startServer = async () => {
   const port = process.env.PORT || 1337;
+  await initDb();
   return port;
 };
 
