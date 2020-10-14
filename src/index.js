@@ -1,21 +1,22 @@
-const {
-  initDb,
-  models,
-  getSequelize,
-  getConnectionString,
-} = require('../infrastructure/db');
+const logger = require('./lib/logger');
+const { initDb } = require('../infrastructure/db');
 
-(async () => {
+const startServer = async () => {
+  const port = process.env.PORT || 1337;
   await initDb();
-})();
+  return port;
+};
 
-async function init() {
-  console.log(`Initializing database...`);
-  await initDb();
-}
-
-try {
-  init();
-} catch (error) {
-  console.error(error);
-}
+module.exports = () => {
+  startServer()
+    .then((port) => {
+      const server = require('./app');
+      server().listen(port, () => {
+        logger.info(`API is live and running on port: ${port}`);
+      });
+    })
+    .catch((error) => {
+      logger.error('failed to start server', error);
+      throw error;
+    });
+};
