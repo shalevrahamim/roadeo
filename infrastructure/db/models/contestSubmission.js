@@ -1,23 +1,30 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class contestSubmission extends Model {
+  class ContestSubmission extends Model {
     static associate(models) {
-      contestSubmission.belongsTo(models.contest, { foreignKey: 'contestId', as: 'contest' });
-      contestSubmission.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
+      ContestSubmission.belongsTo(models.Contest, {
+        foreignKey: 'contestId',
+        as: 'contest',
+      });
+      ContestSubmission.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'user',
+      });
     }
-  };
-  contestSubmission.init({
-    contestId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
-    upVotes: DataTypes.INTEGER,
-    url: DataTypes.STRING,
-    metadata: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'contestSubmission',
-  });
-  return contestSubmission;
+  }
+  ContestSubmission.init(
+    {
+      contestId: DataTypes.INTEGER,
+      userId: DataTypes.INTEGER,
+      upVotes: DataTypes.INTEGER,
+      url: DataTypes.STRING,
+      metadata: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: 'ContestSubmission',
+    }
+  );
+  return ContestSubmission;
 };

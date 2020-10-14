@@ -1,42 +1,42 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('userAwards', {
+    await queryInterface.createTable('UserAwards', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       userId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
-          key: 'id'
+          key: 'id',
         },
         onUpdate: 'cascade',
-        onDelete: 'cascade'
+        onDelete: 'cascade',
       },
       awardId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'awards',
-          key: 'id'
+          model: 'Awards',
+          key: 'id',
         },
         onUpdate: 'cascade',
-        onDelete: 'cascade'
+        onDelete: 'cascade',
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('userAwards');
-  }
+    await queryInterface.dropTable('UserAwards');
+  },
 };

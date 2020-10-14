@@ -1,34 +1,38 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class subModule extends Model {
+  class SubModule extends Model {
     static associate(models) {
-      subModule.hasMany(models.courseSubmission, { as: 'submissions' });
-      subModule.hasMany(models.descriptor, { as: 'descriptors' });
-      subModule.belongsTo(models.module, { foreignKey: 'moduleId', as: 'module' });
-      subModule.belongsToMany(models.User, {
+      SubModule.hasMany(models.CourseSubmission, { as: 'submissions' });
+      SubModule.hasMany(models.Descriptor, { as: 'descriptors' });
+      SubModule.belongsTo(models.Module, {
+        foreignKey: 'moduleId',
+        as: 'module',
+      });
+      SubModule.belongsToMany(models.User, {
         through: 'userCourse',
         as: 'users',
         foreignKey: 'subModuleId',
-        otherKey: 'userId'
+        otherKey: 'userId',
       });
-      subModule.belongsToMany(models.course, {
+      SubModule.belongsToMany(models.Course, {
         through: 'userCourse',
         as: 'courses',
         foreignKey: 'subModuleId',
-        otherKey: 'courseId'
+        otherKey: 'courseId',
       });
     }
-  };
-  subModule.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    moduleId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'subModule',
-  });
-  return subModule;
+  }
+  SubModule.init(
+    {
+      name: DataTypes.STRING,
+      description: DataTypes.STRING,
+      moduleId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'SubModule',
+    }
+  );
+  return SubModule;
 };

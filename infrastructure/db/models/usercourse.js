@@ -1,20 +1,20 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 const user = require('./user');
 module.exports = (sequelize, DataTypes) => {
-  class userCourse extends Model {
-    static associate(models) {
+  class UserCourse extends Model {
+    static associate(models) {}
+  }
+  UserCourse.init(
+    {
+      userId: DataTypes.INTEGER,
+      courseId: DataTypes.INTEGER,
+      subModuleId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'UserCourse',
     }
-  };
-  userCourse.init({
-    userId: DataTypes.INTEGER,
-    courseId: DataTypes.INTEGER,
-    subModuleId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'userCourse',
-  });
-  return userCourse;
+  );
+  return UserCourse;
 };

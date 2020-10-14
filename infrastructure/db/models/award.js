@@ -1,25 +1,26 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class award extends Model {
+  class Award extends Model {
     static associate(models) {
-      award.belongsToMany(models.User, {
-        through: 'userAward',
+      Award.belongsToMany(models.User, {
+        through: 'UserAward',
         as: 'users',
         foreignKey: 'awardId',
-        otherKey: 'userId'
+        otherKey: 'userId',
       });
     }
-  };
-  award.init({
-    name: DataTypes.STRING,
-    type: DataTypes.STRING,
-    description: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'award',
-  });
-  return award;
-}
+  }
+  Award.init(
+    {
+      name: DataTypes.STRING,
+      type: DataTypes.STRING,
+      description: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: 'Award',
+    }
+  );
+  return Award;
+};

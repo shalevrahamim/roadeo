@@ -1,42 +1,42 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('descriptors', {
+    await queryInterface.createTable('Descriptors', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       subModuleId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'subModules',
-          key: 'id'
+          model: 'SubModules',
+          key: 'id',
         },
         onUpdate: 'cascade',
-        onDelete: 'cascade'
+        onDelete: 'cascade',
       },
       type: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       state: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       strategy: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('descriptors');
-  }
+    await queryInterface.dropTable('Descriptors');
+  },
 };
