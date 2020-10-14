@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node ./bin/www src/index.js",
+    "start": "node ./bin/www services/client-api/index.js",
     "db:migrate": "npx sequelize-cli db:migrate"
   },
   "repository": {
@@ -17,7 +17,7 @@
     "url": "https://github.com/shalevrahamim/roadeo/issues"
   },
   "homepage": "https://github.com/shalevrahamim/roadeo#readme",
-  "dependencies": {
-    "express": "4.17.1"
+  "devDependencies": {
+    "lerna": "^3.20.2"
   }
 }
