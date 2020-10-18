@@ -6,24 +6,24 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.ContestSubmission, { as: 'contestSubmissions' });
       User.hasMany(models.CourseSubmission, { as: 'courseSubmissions' });
       User.hasMany(models.LogEntry, { as: 'logEntries' });
-      User.belongsToMany(models.Award, {
-        through: 'userAward',
-        as: 'awards',
+      /* User.belongsToMany(models.Award, {
+        through: 'UserAward',
+        as: 'Awards',
         foreignKey: 'userId',
         otherKey: 'awardId',
       });
       User.belongsToMany(models.Course, {
-        through: 'userCourse',
+        through: 'UserCourse',
         as: 'courses',
         foreignKey: 'userId',
         otherKey: 'courseId',
       });
       User.belongsToMany(models.SubModule, {
-        through: 'userCourse',
+        through: 'UserCourse',
         as: 'subModules',
         foreignKey: 'userId',
         otherKey: 'subModuleId',
-      });
+      }); */
     }
   }
   User.init(

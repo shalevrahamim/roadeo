@@ -5,13 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Course.hasMany(models.Module, { as: 'modules' });
       Course.belongsToMany(models.User, {
-        through: 'userCourse',
+        through: 'UserCourse',
         as: 'users',
         foreignKey: 'courseId',
         otherKey: 'userId',
       });
       Course.belongsToMany(models.SubModule, {
-        through: 'userCourse',
+        through: 'UserCourse',
         as: 'subModules',
         foreignKey: 'courseId',
         otherKey: 'subModuleId',
