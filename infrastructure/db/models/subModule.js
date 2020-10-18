@@ -10,13 +10,13 @@ module.exports = (sequelize, DataTypes) => {
         as: 'module',
       });
       SubModule.belongsToMany(models.User, {
-        through: 'userCourse',
+        through: 'UserCourse',
         as: 'users',
         foreignKey: 'subModuleId',
         otherKey: 'userId',
       });
       SubModule.belongsToMany(models.Course, {
-        through: 'userCourse',
+        through: 'UserCourse',
         as: 'courses',
         foreignKey: 'subModuleId',
         otherKey: 'courseId',
