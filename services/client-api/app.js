@@ -7,9 +7,16 @@ const app = express();
 
 app.use(
   postgraphile(process.env.DATABASE_URL || getConnectionString(), {
-    watchPg: true,
+    graphql: true,
     graphiql: true,
+    graphiqlRoute: '/graphiql',
+    dynamicJson: true,
+    ignoreRBAC: false,
     enhanceGraphiql: true,
+    graphileBuildOptions: {
+      connectionFilterRelations: true, // default: false
+      pgDeletedColumnName: 'deletedAt', // non-boolean column -> checked as "IS NULL"
+    },
   })
 );
 

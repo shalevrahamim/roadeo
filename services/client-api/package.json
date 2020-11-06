@@ -1,8 +1,8 @@
 {
+  "version": "1.0.0",
   "name": "client-api",
   "dependencies": {
     "express": "4.17.1",
     "postgraphile": "4.9.0"
-  },
-  "version": "1.0.0"
+  }
 }
